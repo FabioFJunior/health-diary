@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { PaginaInteira, Login, LadoEsquerdo, Texto, Campos, LadoDireito} from './styles';
+import { PaginaInteira, Login, LadoEsquerdo, Texto, Campos, LadoDireito, AreaBotoes} from './styles';
 import { Button, TextField } from '@material-ui/core';
 import doctors from '../../img/doctors.svg';
 
 import Home from '../Home/index';
+import SignUp from '../SignUp/index';
 import { Switch, Route, Link } from 'react-router-dom';
 
 class App extends Component{
@@ -12,10 +13,10 @@ class App extends Component{
             <PaginaInteira>
                 <Switch>
                 <Route path="/Home" component = {Home}/>
-               
+                <Route path="/SignUp" component = {SignUp}/>
                 <Login>
                     <LadoEsquerdo>
-                        <Texto> Bem-Vindo </Texto>
+                        <Texto> Health Diary </Texto>
                         <Campos>
                             <TextField
                                 variant = 'outlined'
@@ -36,21 +37,37 @@ class App extends Component{
                                 type = 'password'
                             />
                           
-                            <Link to= "/Home">
-                                <Button
-                                    
-                                    
-                                    type='button'
-                                    variant='contained'
-                                    fullWidth
-                                    color='green'
-                                    size='large'
-                                    >
-                                    Entrar
-                                </Button>
-                            </Link>
-
+                            
+                              <AreaBotoes>
+                                <Link to= "/Home">
+                                    <Button 
+                                        variant='contained'
+                                        fullWidth
+                                        color='black'
+                                        size='large'
+                                        
+                                        >
+                                        Entrar
+                                    </Button>
+                                </Link>
+                            </AreaBotoes>
+                              
+                              <AreaBotoes>
+                                    <Link to= "/SignUp">  
+                                        <Button
+                                            type='button'
+                                            variant='contained'
+                                            fullWidth
+                                            color='green'
+                                            size='large'
+                                            >
+                                            Cadastrar-se
+                                        </Button>
+                                    </Link> 
+                                </AreaBotoes> 
+                            
                         </Campos>
+                        
                     </LadoEsquerdo>
 
                     <LadoDireito>

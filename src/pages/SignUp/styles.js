@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 
-export const DButton = styled.div`
-    padding: 40px;
-`;
-
 
 export const PaginaInteira = styled.div`
     padding-Top: 50px;
-    padding-Left: 120px;
-    padding-Right: 120px;
+    padding-Left: 250px;
+    padding-Right: 250px;
     padding-Bottom: 50px;
     color: red;
 `;
@@ -19,21 +15,15 @@ export const Login = styled.div`
 
 export const LadoEsquerdo = styled.div`
     background: linear-gradient(to top,rgba(105,102,246,1),rgba(105,102,246,0.75));
-    width: 40%;
+    width: 100%;
     height: 100vh;
     display: block;
     float: left;
 `;
 
 export const Texto = styled.div`
-    color: white;
-    font-Weight: bold;
-    font-Size: 40px;
-    display: flex;
-    padding-Top: 200px;
-    align-Items: center;
-    height: 5em;
-    justify-Content: center;
+    display: inline-block;  
+    padding-Right: 33px
 `;
 
 export const Campos = styled.div`
@@ -46,16 +36,15 @@ export const LadoDireito = styled.div`
     height: 100vh;
     padding-Left: 20px;
 `;
-
 export const AreaBotoes = styled.div`
     padding-Top: 7px;
-    padding-Right: 10px;
+    padding-Rigth: 10px;
 `;
 
+export const CamposRegistro = styled.div`
+padding-Left: 30px;
 
-
-
-
+`;
 
 
 
