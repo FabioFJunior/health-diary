@@ -1,133 +1,112 @@
-import React, { Component } from 'react';
-import { PaginaInteira, Texto, LadoEsquerdo, CamposRegistro, Campos, LadoDireito, AreaBotoes} from './styles';
-import { Button, TextField } from '@material-ui/core';
+import React, { Component } from 'react'
+import axios from 'axios'
+import { PaginaInteira, Texto, LadoEsquerdo, CamposRegistro, Campos, LadoDireito, AreaBotoes } from './styles'
+import { Button, TextField } from '@material-ui/core'
+import { Switch, Route, Link } from 'react-router-dom'
 
-import { Switch, Route, Link } from 'react-router-dom';
+const registerUser = ({
+  name,
+  password,
+  passwordConfirmation,
+  email,
+}) => {
+  if (password !== passwordConfirmation) {
+    alert('Senhas são diferentes')
+    return
+  }
+  axios({
+    method: 'get',
+    url: 'http://localhost:3000/example',
+  })
+    .then((res) => {
+      console.log(res)
+    })
+  console.log('registrando usuario', name)
+}
 
 
-class SignUp extends Component{
-    render(){
-        return(
-            <PaginaInteira>
-                <Switch>
-                    
-                
-                    
-                    <LadoEsquerdo>
-                        
-                        <Campos>
-                         
-                            <TextField
-                                variant = 'outlined'
-                                margin = 'normal'
-                                id='nome'
-                                fullWidth
-                                label='Nome Completo:'
-                                name='username'
-                                type = 'email'
-                            />
-
-                           
-                                <Texto>
-                                <TextField
-                                    variant = 'outlined'
-                                    margin = 'normal'
-                                    id='numero'
-                                    label='Nome de Usuario:'
-                                    name='username'
-                                    type = 'email'
-                                />
-                            </Texto>
-                            <Texto>
-                            <TextField
-                                variant = 'outlined'
-                                margin = 'normal'
-                                id='idade'
-                                label='Idade:'
-                                name='username'
-                                type = 'email'
-                            />
-                            </Texto>
-                            <TextField
-                                variant = 'outlined'
-                                margin = 'normal'
-                                id='numero'
-                                label='Celular:'
-                                name='username'
-                                type = 'email'
-                            />
-                            
-
-                         
-                            <TextField
-                                variant = 'outlined'
-                                margin = 'normal'
-                                fullWidth
-                                id='email'
-                                label='Email:'
-                                name='username'
-                                type = 'email'
-                            />
-                             <TextField
-                                variant = 'outlined'
-                                margin = 'normal'
-                                fullWidth
-                                id='email'
-                                label='Confimar Email:'
-                                name='username'
-                                type = 'email'
-                            />
-
-                            
-                            <TextField
-                                variant = 'outlined'
-                                margin = 'normal'
-                                fullWidth
-                                id='password'
-                                label='Senha:'
-                                name='password'
-                                type = 'password'
-                            />
-                            
-                            <TextField
-                                variant = 'outlined'
-                                margin = 'normal'
-                                fullWidth
-                                id='password'
-                                label='Confirmar senha:'
-                                name='password'
-                                type = 'password'
-                            />
-                          
-                            
-                              <AreaBotoes>
-                              <Link to= "/">
-                                    <Button 
-                                        variant='contained'
-                                        fullWidth
-                                        color='black'
-                                        size='large'
-                                        
-                                        >
-                                        Concluir
-                                    </Button>
-                             </Link>
-                            </AreaBotoes>
-                            
-
-                            
-                        </Campos>
-                        
-                    </LadoEsquerdo>
-
-                    
-              </Switch>
-
-               
-            </PaginaInteira>
-
-        );
+class SignUp extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      name: '',
+      password: '',
+      passwordConfirmation: '',
+      email: '',
     }
+  }
+  
+
+  render() {
+    return (
+      <PaginaInteira>
+        <Switch>
+          <LadoEsquerdo>
+            <Campos>
+              <TextField
+                variant='outlined'
+                margin='normal'
+                fullWidth
+                label='Nome Completo'
+                type='text'
+                onChange = {(event) => this.setState({name:event.target.value})}
+              />
+
+              <TextField
+                variant='outlined'
+                margin='normal'
+                fullWidth
+                label='Email'
+                type='text'
+                onChange = {(event) => this.setState({email:event.target.value})}
+              />
+
+              <TextField
+                variant='outlined'
+                margin='normal'
+                fullWidth
+                label='Senha'
+                type='password'
+                onChange = {(event) => this.setState({password:event.target.value})}
+              />
+
+              <TextField
+                variant='outlined'
+                margin='normal'
+                fullWidth
+                label='Confirmar senha'
+                type='password'
+                onChange = {(event) => this.setState({passwordConfirmation:event.target.value})}
+              />
+
+              <AreaBotoes>
+                <Button
+                  variant='contained'
+                  fullWidth
+                  size='large'
+                  onClick = { () => registerUser(this.state) }
+                >
+                  Concluir
+                </Button>
+              </AreaBotoes>
+
+              <AreaBotoes>
+                <Button
+                  variant='contained'
+                  fullWidth
+                  size='large'
+                >
+                  Voltar
+                </Button>
+              </AreaBotoes>
+            </Campos>
+          </LadoEsquerdo>
+        </Switch>
+        <LadoDireito>
+        </LadoDireito>
+      </PaginaInteira>
+    );
+  }
 }
 
 export default SignUp;
